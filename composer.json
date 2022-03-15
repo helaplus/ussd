@@ -1,0 +1,13 @@
+{
+    "name": "helaplus/laravel-mifos",
+    "description": "A laravel package to make it simpler to interact with Mifos API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Le-Yo",
+            "email": "leo@helaplus.com"
+        }
+    ],
+    "require": {}
+}
