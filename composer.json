@@ -14,5 +14,12 @@
         "psr-4": {
             "helaplus\\laravel-mifos\\": "src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Helaplus\\LaravelMifos\\LaravelMifosServiceProvider"
+            ]
+        }
     }
 }
