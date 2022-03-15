@@ -23,7 +23,10 @@
         "laravel": {
             "providers": [
                 "Helaplus\\LaravelMifos\\LaravelMifosServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Mifos": "Helaplus\\LaravelMifos\\Facades\\Mifos"
+            }
         }
     },
     "require-dev": {

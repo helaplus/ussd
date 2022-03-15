@@ -8,7 +8,9 @@ class LaravelMifosServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        //
+        $this->app->bind('mifos',function($app){
+           return new Mifos();
+        });
     }
 
     public function boot()
