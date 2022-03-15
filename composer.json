@@ -9,10 +9,14 @@
             "email": "leo@helaplus.com"
         }
     ],
-    "require": {},
     "autoload": {
         "psr-4": {
             "helaplus\\laravel-mifos\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Helaplus\\LaravelMifos\\Tests\\": "tests"
         }
     },
     "extra": {
@@ -21,5 +25,8 @@
                 "Helaplus\\LaravelMifos\\LaravelMifosServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     }
 }
