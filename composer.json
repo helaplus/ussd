@@ -9,5 +9,10 @@
             "email": "leo@helaplus.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "helaplus\\laravel-mifos\\": "src"
+        }
+    }
 }
