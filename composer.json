@@ -16,17 +16,14 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Helaplus\\Ussd\\Tests\\": "tests"
+            "Helaplus\\Ussd\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
                 "Helaplus\\Ussd\\UssdServiceProvider"
-            ],
-            "aliases": {
-                "Ussd": "Helaplus\\Ussd\\Facades\\Ussd"
-            }
+            ]
         }
     },
     "require-dev": {
