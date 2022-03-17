@@ -1,8 +1,8 @@
 <?php
 
-namespace Helaplus\LaravelMifos;
+namespace Helaplus\Ussd;
 
-class Mifos
+class Ussd
 {
     public function __construct()
     {

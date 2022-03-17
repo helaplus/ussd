@@ -1,12 +1,12 @@
 <?php
 
-namespace Helaplus\LaravelMifos\Tests\Unit;
+namespace Helaplus\Ussd\Tests\Unit;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
-use Helaplus\LaravelMifos\Tests\TestCase;
+use Helaplus\Ussd\Tests\TestCase;
 
-class InstallLaravelMIfosPackageTest extends TestCase
+class InstallUssdPackageTest extends TestCase
 {
     /** @test */
     function the_install_command_copies_the_configuration()

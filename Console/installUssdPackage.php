@@ -1,22 +1,22 @@
 <?php
 
-namespace Helaplus\LaravelMifos\Console;
+namespace Helaplus\Ussd\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
-class InstallLaravelMifosPackage extends Command
+class InstallUssdPackage extends Command
 {
-    protected $signature = 'LaravelMifos:install';
+    protected $signature = 'Ussd:install';
 
-    protected $description = "Install LaravelMifos Package";
+    protected $description = "Install Ussd Package";
 
     public function handle(){
-        $this->info('Installing LaravelMifosPackage...');
+        $this->info('Installing UssdPackage...');
 
         $this->info('Publishing configuration');
 
-        if(! $this->configExists('mifos.php')){
+        if(! $this->configExists('ussd.php')){
             $this->publishConfiguration();
             $this->info('Published configuration');
         }else{
@@ -28,7 +28,7 @@ class InstallLaravelMifosPackage extends Command
             }
         }
 
-        $this->info ('Installed LaravelMifosPackage');
+        $this->info ('Installed UssdPackage');
     }
 
     private function configExists($fileName){
@@ -43,7 +43,7 @@ class InstallLaravelMifosPackage extends Command
 
     private function publishConfiguration($forcePublish = false){
         $params = [
-          '--provider' => 'Helaplus\LaravelMifos\LaravelMifosServiceProvider.php',
+          '--provider' => 'Helaplus\Ussd\UssdServiceProvider.php',
             '--tag' => "config"
         ];
 

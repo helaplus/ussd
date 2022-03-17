@@ -1,13 +1,13 @@
 <?php
 
-namespace Helaplus\LaravelMifos\Facades;
+namespace Helaplus\Ussd\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Calculator extends Facade
+class Ussd extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'mifos';
+        return 'ussd';
     }
 }

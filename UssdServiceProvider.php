@@ -1,16 +1,17 @@
 <?php
 
-namespace Helaplus\LaravelMifos;
+namespace Helaplus\Ussd;
 
-use Helaplus\LaravelMifos\Console\InstallLaravelMifosPackage;
+use Helaplus\Ussd\Console\InstallUssdPackage;
+use Helaplus\Ussd\Facades\Ussd;
 use Illuminate\Support\ServiceProvider;
 
-class LaravelMifosServiceProvider extends ServiceProvider
+class UssdServiceProvider extends ServiceProvider
 {
     public function register()
     {
         $this->app->bind('mifos',function($app){
-           return new Mifos();
+           return new Ussd();
         });
     }
 
@@ -19,7 +20,7 @@ class LaravelMifosServiceProvider extends ServiceProvider
         //Register a command if we are using the application vis CLI
         if($this->app->runningInConsole()){
             $this->commands([
-                    InstallLaravelMifosPackage::class,
+                    InstallUssdPackage::class,
                 ]);
         }
     }

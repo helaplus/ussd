@@ -1,6 +1,6 @@
 {
-    "name": "helaplus/laravel-mifos",
-    "description": "A laravel package to make it simpler to interact with Mifos API",
+    "name": "helaplus/ussd",
+    "description": "A laravel package to make it simpler to create USSD applications",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -11,21 +11,21 @@
     ],
     "autoload": {
         "psr-4": {
-            "helaplus\\laravel-mifos\\": "src"
+            "helaplus\\ussd\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Helaplus\\LaravelMifos\\Tests\\": "tests"
+            "Helaplus\\Ussd\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Helaplus\\LaravelMifos\\LaravelMifosServiceProvider"
+                "Helaplus\\Ussd\\UssdServiceProvider"
             ],
             "aliases": {
-                "Mifos": "Helaplus\\LaravelMifos\\Facades\\Mifos"
+                "Mifos": "Helaplus\\Ussd\\Facades\\Ussd"
             }
         }
     },
