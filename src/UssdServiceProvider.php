@@ -23,15 +23,15 @@ class UssdServiceProvider extends ServiceProvider
                     InstallUssdPackage::class,
                 ]);
         }
-//        Route::group($this->routeConfiguration(), function () {
-//            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-//        });
+        Route::group($this->routeConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        });
     }
 
-//    protected function routeConfiguration()
-//    {
-//        return [
-//            'prefix' => config('ussd.prefix')
-//        ];
-//    }
+    protected function routeConfiguration()
+    {
+        return [
+            'prefix' => config('ussd.prefix')
+        ];
+    }
 }
