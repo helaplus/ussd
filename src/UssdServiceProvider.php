@@ -11,6 +11,7 @@ class UssdServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'ussd');
         $this->app->bind('ussd',function($app){
            return new Ussd();
         });
@@ -18,6 +19,14 @@ class UssdServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        //publish the config file
+        if ($this->app->runningInConsole()) {
+
+            $this->publishes([
+                __DIR__.'/../config/config.php' => config_path('ussd.php'),
+            ], 'config');
+
+        }
         //Register a command if we are using the application vis CLI
         if($this->app->runningInConsole()){
             $this->commands([
