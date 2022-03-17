@@ -1,0 +1,13 @@
+{
+    "name": "Ussd",
+    "alias": "ussd",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Ussd\\Providers\\UssdServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
