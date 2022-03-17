@@ -1,10 +1,10 @@
 {
-    "name": "nwidart/ussd",
-    "description": "",
+    "name": "helaplus/ussd",
+    "description": "Simple, Faster USSD Application Development using Laravel",
     "authors": [
         {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
+            "name": "Le-Yo",
+            "email": "leo@helaplus.com"
         }
     ],
     "extra": {

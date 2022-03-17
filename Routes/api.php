@@ -14,5 +14,5 @@ use Illuminate\Http\Request;
 */
 
 Route::post('/ussd', function (Request $request) {
-   return 'End Ussd is running'; 
+   return 'End Ussd is running';
 });
