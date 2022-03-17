@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Ussd\Providers;
+namespace Helaplus\Ussd\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;

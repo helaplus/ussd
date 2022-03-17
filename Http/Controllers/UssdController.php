@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Ussd\Http\Controllers;
+namespace Helaplus\Ussd\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
