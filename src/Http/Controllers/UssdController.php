@@ -13,6 +13,6 @@ class UssdController extends Controller
     }
 
     public function index(){
-        return "CON Welcome to ".env('APP_NAME');
-    } 
+        return "CON Welcome to ".getenv('APP_NAME');
+    }
 }
