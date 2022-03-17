@@ -1,5 +1,4 @@
 <?php
-namespace Helaplus\Ussd\Routes;
 
 use Illuminate\Support\Facades\Route;
 use Helaplus\Ussd\Http\Controllers\UssdController;
