@@ -28,10 +28,10 @@ class UssdServiceProvider extends ServiceProvider
 //        });
     }
 
-    protected function routeConfiguration()
-    {
-        return [
-            'prefix' => config('ussd.prefix')
-        ];
-    }
+//    protected function routeConfiguration()
+//    {
+//        return [
+//            'prefix' => config('ussd.prefix')
+//        ];
+//    }
 }
