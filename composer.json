@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "helaplus\\ussd\\": "src"
+            "Helaplus\\Ussd\\": "src/"
         }
     },
     "autoload-dev": {
