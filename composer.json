@@ -1,6 +1,8 @@
 {
     "name": "helaplus/ussd",
     "description": "Simple, Faster USSD Application Development using Laravel",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Le-Yo",
