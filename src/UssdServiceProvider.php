@@ -23,9 +23,9 @@ class UssdServiceProvider extends ServiceProvider
                     InstallUssdPackage::class,
                 ]);
         }
-        Route::group($this->routeConfiguration(), function () {
+//        Route::group($this->routeConfiguration(), function () {
             $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-        });
+//        });
     }
 
     protected function routeConfiguration()
