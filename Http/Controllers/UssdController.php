@@ -14,7 +14,8 @@ class UssdController extends Controller
      */
     public function index()
     {
-        return view('ussd::index');
+        echo "hapa";
+        exit;
     }
 
     /**

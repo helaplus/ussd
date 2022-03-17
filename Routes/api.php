@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/ussd', function (Request $request) {
-    return $request->user();
+Route::post('/ussd', function (Request $request) {
+   return 'End Ussd is running'; 
 });
