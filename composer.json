@@ -25,7 +25,7 @@
                 "Helaplus\\Ussd\\UssdServiceProvider"
             ],
             "aliases": {
-                "Mifos": "Helaplus\\Ussd\\Facades\\Ussd"
+                "Ussd": "Helaplus\\Ussd\\Facades\\Ussd"
             }
         }
     },
