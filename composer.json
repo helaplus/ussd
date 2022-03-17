@@ -9,18 +9,21 @@
             "email": "leo@helaplus.com"
         }
     ],
-    "extra": {
-        "module-dir": "vendor",
-        "laravel": {
-            "providers": [],
-            "aliases": {
-
-            }
-        }
-    },
+    "keywords": ["Laravel", "Helaplus", "Fintech", "Ussd"],
     "autoload": {
         "psr-4": {
-            "Modules\\Ussd\\": ""
+            "Modules\\Ussd\\": "",
+            "helaplus\\Ussd\\": ""
         }
+    },
+    "extra": {
+    "laravel": {
+      "providers": [
+        "Helaplus\\Ussd\\Providers\\UssdServiceProvider"
+      ],
+      "aliases": {
+        "Ussd": "Helaplus\\Ussd\\Facades\\Ussd"
+      }
+    }
     }
 }
