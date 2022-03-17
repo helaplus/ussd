@@ -40,7 +40,7 @@ class UssdServiceProvider extends ServiceProvider
 
     protected function routeConfiguration()
     {
-        return [ 
+        return [
             'prefix' => config('ussd.prefix')
         ];
     }

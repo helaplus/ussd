@@ -13,6 +13,6 @@ class UssdController extends Controller
     }
 
     public function index(){
-        return "CON USSD is running";
+        return "CON Welcome to ".env('app_name');
     }
 }
