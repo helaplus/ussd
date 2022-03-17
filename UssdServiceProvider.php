@@ -10,7 +10,7 @@ class UssdServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind('mifos',function($app){
+        $this->app->bind('ussd',function($app){
            return new Ussd();
         });
     }
