@@ -5,6 +5,7 @@ namespace Helaplus\Ussd;
 use Helaplus\Ussd\Console\InstallUssdPackage;
 use Helaplus\Ussd\Facades\Ussd;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class UssdServiceProvider extends ServiceProvider
 {
@@ -26,7 +27,7 @@ class UssdServiceProvider extends ServiceProvider
         Route::group($this->routeConfiguration(), function () {
             $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         });
-    } 
+    }
 
     protected function routeConfiguration()
     {
