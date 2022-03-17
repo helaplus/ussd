@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'ussd.prefix' => 'ussd'
+    'prefix' => 'ussd',
 ];
