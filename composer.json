@@ -20,10 +20,7 @@
     "laravel": {
       "providers": [
         "Helaplus\\Ussd\\Providers\\UssdServiceProvider"
-      ],
-      "aliases": {
-        "Ussd": "Helaplus\\Ussd\\Facades\\Ussd"
-      }
+      ]
     }
     }
 }
