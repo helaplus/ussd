@@ -162,9 +162,7 @@ class UssdHelper {
     public static function checkMenuSkipLogic($state,$menu){
         $skipLogic = UssdUserMenuSkipLogic::wherePhoneAndUssdMenuId($state->phone,$menu->id)->first();
         if($skipLogic){
-            print_r($skipLogic);
-            exit;
-        while($skipLogic->skip == 1) {
+        while($skipLogic['skip'] == 1) {
             $menu = UssdMenu::find($menu->next_ussd_menu_id);
             $skipLogic = UssdUserMenuSkipLogic::wherePhoneAndUssdMenuId($state->phone,$menu->id)->first();
         }
