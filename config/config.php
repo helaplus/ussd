@@ -10,4 +10,7 @@ return [
 
     //default welcome message
     'default_error_message' => 'We experienced an error processing your request',
+
+    //default thank you message
+    'thank_you_message' => '"Thank you for being our valued customer"',
 ];
