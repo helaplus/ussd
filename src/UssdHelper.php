@@ -25,7 +25,7 @@ class UssdHelper {
 
         $message = $input->latest_text;
         
-        switch ($state->session) {
+        switch ($state->state) {
             case 0 :
                 //neutral user
                 break;
@@ -96,7 +96,7 @@ class UssdHelper {
     //reset user state
     public static function resetUser($state)
     {
-        $state->session = 0;
+        $state->state = 0;
         $state->progress = 0;
         $state->menu_id = 0;
         $state->difficulty_level = 0;
@@ -174,7 +174,7 @@ class UssdHelper {
 
     
     public function storeUssdResponse($state, $message)
-    {
+    { 
         $ussd_response = new UssdResponse();
         $ussd_response->phone = $state->phone;
         $ussd_response->menu_id = $state->menu_id;
@@ -193,7 +193,7 @@ class UssdHelper {
             $state->menu_item_id = $menuItem->id;
             $state->menu_id = $menu->id;
             $state->progress = $step;
-            $state->session = 2;
+            $state->state = 2;
             $state->save();
             return $menuItem->description;
         }
@@ -230,7 +230,7 @@ class UssdHelper {
         } elseif ($type == 2) {
             $output = "CON ";
             $response = $response . PHP_EOL . "1. Back to main menu" . PHP_EOL . "2. Log out";
-            $state->session = 4;
+            $state->state = 4;
             $state->progress = 0;
             $state->save();
         } else {
