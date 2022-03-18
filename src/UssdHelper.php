@@ -322,8 +322,15 @@ class UssdHelper {
             $state->save();
             return $response. $menuItem->description;
         } else {
-                $response = self::confirmBatch($state, $menu);
-            return $response;
+                $skiplogic = new UssdUserMenuSkipLogic();
+                $skiplogic->phone = $state->phone;
+                $skiplogic->ussd_menu_id = $menu->id;
+                $skiplogic->skip = TRUE;
+                $skiplogic->next_ussd_menu_id = 2;
+                $skiplogic->save();
+                self::resetUser($state);
+                $response = $menu->confirmation_message;
+                return $response;
         }
     }
     public static function presetValidation($state,$message,$menuItem){
