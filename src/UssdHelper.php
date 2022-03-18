@@ -6,6 +6,7 @@ use Helaplus\Ussd\Models\UssdLog;
 use Helaplus\Ussd\Models\UssdMenu;
 use Helaplus\Ussd\Models\UssdMenuItems;
 use Helaplus\Ussd\Models\UssdResponse;
+use Helaplus\Ussd\Models\UssdUserMenuSkipLogic;
 
 class UssdHelper {
 
@@ -159,7 +160,7 @@ class UssdHelper {
     }
 
     public static function checkMenuSkipLogic($state,$menu){
-        $skipLogic = Ussd::wherePhoneAndUssdMenuId($state->phone,$menu->id)->first();
+        $skipLogic = UssdUserMenuSkipLogic::wherePhoneAndUssdMenuId($state->phone,$menu->id)->first();
 
         while($skipLogic->skip == 1) {
             $menu = UssdMenu::find($menu->next_ussd_menu_id);
