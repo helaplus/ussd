@@ -23,7 +23,7 @@ class UssdController extends Controller
         $state = UssdState::firstorcreate([ 'phone'=>$input->phone]);
 
         //route request
-        $response = UssdHelper::isUserStarting() ? UssdHelper::getHomeMenu($state) : UssdHelper::stateSwitch($input,$state);
+        $response = UssdHelper::isUserStarting($input) ? UssdHelper::getHomeMenu($state) : UssdHelper::stateSwitch($input,$state);
 
         //sendResponse
         return UssdHelper::sendResponse($response,1,$state,$input);
