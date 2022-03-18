@@ -170,7 +170,7 @@ class UssdHelper {
         return $menu;
     }
 
-    public function getMenuItems($id){
+    public static function getMenuItems($id){
         return UssdMenuItems::whereMenuId($id)->get();
     }
 
@@ -187,7 +187,7 @@ class UssdHelper {
     }
     
 //start a single process
-    public function singleProcess($menu, $state, $step)
+    public static function singleProcess($menu, $state, $step)
     {
         $menuItem = UssdMenuItems::whereMenuIdAndStep($menu->id, $step)->first();
         if ($menuItem) {
