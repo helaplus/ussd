@@ -322,12 +322,16 @@ class UssdHelper {
             $state->save();
             return $response. $menuItem->description;
         } else {
+            if($menu->skippable == true){
+
                 $skiplogic = new UssdUserMenuSkipLogic();
                 $skiplogic->phone = $state->phone;
                 $skiplogic->ussd_menu_id = $menu->id;
                 $skiplogic->skip = TRUE;
-                $skiplogic->next_ussd_menu_id = 2;
+                $skiplogic->next_ussd_menu_id = $menu->next_ussd_menu_id;
                 $skiplogic->save();
+
+            }
                 self::resetUser($state);
                 $response = $menu->confirmation_message;
                 return $response;
