@@ -174,7 +174,7 @@ class UssdHelper {
 
     
     public function storeUssdResponse($state, $message)
-    { 
+    {
         $ussd_response = new UssdResponse();
         $ussd_response->phone = $state->phone;
         $ussd_response->menu_id = $state->menu_id;
@@ -240,6 +240,13 @@ class UssdHelper {
         header('Content-type: text/plain');
         echo $output;
         exit;
+    }
+
+    public static function replaceTemplates($session,$response){
+        //$search  = array('{param}','{param2}'); // sample
+        //$replace = array('{param}','{param2');
+        //$response = str_replace($search, $replace, $response);
+        return $response;
     }
 
 }
