@@ -223,7 +223,7 @@ class UssdHelper {
 
         $response = self::replaceTemplates($state,$response);
         //Log response
-        self::storeUssdLog($state,$input,0,$response);
+        self::storeUssdLog((array) $input,0,$response);
 
         if ($type == 1) {
             $output = "CON ";
