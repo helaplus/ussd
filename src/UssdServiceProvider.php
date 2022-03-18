@@ -28,6 +28,15 @@ class UssdServiceProvider extends ServiceProvider
             ], 'config');
 
         }
+
+        if ($this->app->runningInConsole()) {
+            // Export the migration
+                $this->publishes([
+                    __DIR__ . '/../database/seeders/SeedUssdMenuTableSeeder.php' => database_path('seeders/SeedUssdMenuTableSeeder.php'),
+                    __DIR__ . '/../database/seeders/SeedUssdMenuItemsTableSeeder.php' => database_path('seeders/SeedUssdMenuItemsTableSeeder.php'),
+                    // you can add any number of migrations here
+                ], 'seeders');
+        }
         //Register a command if we are using the application vis CLI
 //        if($this->app->runningInConsole()){
 //            $this->commands([
