@@ -1,6 +1,6 @@
 <?php
 
-namespace Helaplus\Ussd\Database\Seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
@@ -17,11 +17,11 @@ class SeedUssdMenuItemsTableSeeder extends Seeder
     {
         Model::unguard();
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        DB::table('ussd_menus_items')->truncate();
+        DB::table('ussd_menu_items')->truncate();
 
-        DB::table('ussd_menus_items')->delete();
+        DB::table('ussd_menu_items')->delete();
 
-        DB::table('ussd_menus_items')->insert(array(
+        DB::table('ussd_menu_items')->insert(array(
             array(
                 'menu_id' => 1,
                 'description' => 'Sample description 1 ',
