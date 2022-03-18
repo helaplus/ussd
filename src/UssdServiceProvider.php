@@ -27,7 +27,7 @@ class UssdServiceProvider extends ServiceProvider
                 __DIR__.'/../config/config.php' => config_path('ussd.php'),
             ], 'config');
 
-        } 
+        }
         //Register a command if we are using the application vis CLI
 //        if($this->app->runningInConsole()){
 //            $this->commands([
