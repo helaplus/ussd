@@ -161,10 +161,13 @@ class UssdHelper {
 
     public static function checkMenuSkipLogic($state,$menu){
         $skipLogic = UssdUserMenuSkipLogic::wherePhoneAndUssdMenuId($state->phone,$menu->id)->first();
-        if(!is_null($skipLogic)){
-        while($skipLogic['skip'] == 1) {
+        if(isset($skipLogic->skip)){
+        while(isset($skipLogic->skip)) {
+            if($skipLogic->skip == 1){
+
             $menu = UssdMenu::find($menu->next_ussd_menu_id);
             $skipLogic = UssdUserMenuSkipLogic::wherePhoneAndUssdMenuId($state->phone,$menu->id)->first();
+            }
         }
         }
         return $menu;
