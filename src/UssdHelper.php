@@ -175,7 +175,7 @@ class UssdHelper {
     }
 
     
-    public function storeUssdResponse($state, $message)
+    public static function storeUssdResponse($state, $message)
     {
         $ussd_response = new UssdResponse();
         $ussd_response->phone = $state->phone;
