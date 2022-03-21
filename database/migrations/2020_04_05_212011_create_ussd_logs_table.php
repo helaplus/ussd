@@ -17,7 +17,7 @@ class CreateUssdLogsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('app_id')->default(1);
             $table->string('phone');
-            $table->string('text')->nullable();
+            $table->longText('text')->nullable();
             $table->string('service_code')->nullable();
             $table->string('session_id')->nullable();
             $table->integer('type')->nullable();
