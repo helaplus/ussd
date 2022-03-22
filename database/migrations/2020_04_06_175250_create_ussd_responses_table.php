@@ -18,7 +18,7 @@ class CreateUssdResponsesTable extends Migration
             $table->string('phone')->default(0);
             $table->integer('menu_id')->unsigned()->nullable();
             $table->integer('menu_item_id')->unsigned()->nullable();
-            $table->string('response', 45);
+            $table->longText('response', 45);
             $table->timestamps();
         });
     }
