@@ -2,7 +2,7 @@
 
 namespace Helaplus\Ussd\Tests;
 
-use Helaplus\Ussd\UssdServiceProvider;
+use Helaplus\Ussd\EvotingServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -14,7 +14,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            UssdServiceProvider::class,
+            EvotingServiceProvider::class,
         ];
     }
 

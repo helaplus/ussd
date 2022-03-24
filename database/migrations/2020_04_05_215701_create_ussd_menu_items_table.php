@@ -21,6 +21,7 @@ class CreateUssdMenuItemsTable extends Migration
             $table->integer('next_menu_id')->default(NULL);
             $table->integer('step');
             $table->string('validation')->nullable();
+            $table->string('variable_name')->nullable();
             $table->string('confirmation_phrase');
             $table->timestamps();
         });

@@ -28,6 +28,7 @@ class SeedUssdMenuItemsTableSeeder extends Seeder
                 'next_menu_id' => 0,
                 'step' => 1,
                 'validation' => '',
+                'variable_name' => 'name1',
                 'confirmation_phrase' => 'Confirmation Phrase 1',
             ),
             array(
@@ -36,6 +37,7 @@ class SeedUssdMenuItemsTableSeeder extends Seeder
                 'next_menu_id' => 0,
                 'step' => 2,
                 'validation' => '',
+                'variable_name' => 'name2',
                 'confirmation_phrase' => 'Confirmation Phrase 2',
             ),
             array(
@@ -44,6 +46,7 @@ class SeedUssdMenuItemsTableSeeder extends Seeder
                 'next_menu_id' => 0,
                 'step' => 3,
                 'validation' => '',
+                'variable_name' => 'name3',
                 'confirmation_phrase' => 'Confirmation Phrase 3',
             ),
 
@@ -53,6 +56,7 @@ class SeedUssdMenuItemsTableSeeder extends Seeder
                 'next_menu_id' => 2,
                 'step' => 1,
                 'validation' => 'custom',
+                'variable_name' => 'name4',
                 'confirmation_phrase' => 'Confirmation Phrase 4',
             ),
             array(
@@ -61,6 +65,7 @@ class SeedUssdMenuItemsTableSeeder extends Seeder
                 'next_menu_id' => 0,
                 'step' => 1,
                 'validation' => 'custom',
+                'variable_name' => 'name5',
                 'confirmation_phrase' => 'Confirmation Phrase 5',
             ),
             array(
@@ -69,6 +74,7 @@ class SeedUssdMenuItemsTableSeeder extends Seeder
                 'next_menu_id' => 0,
                 'step' => 2,
                 'validation' => 'min:4|max:4',
+                'variable_name' => 'name6',
                 'confirmation_phrase' => 'Confirmation Phrase 6',
             ),
             array(
@@ -77,6 +83,7 @@ class SeedUssdMenuItemsTableSeeder extends Seeder
                 'next_menu_id' => 0,
                 'step' => 3,
                 'validation' => 'custom',
+                'variable_name' => 'name7',
                 'confirmation_phrase' => 'Confirmation Phrase 7',
             ),
             array(
@@ -85,6 +92,7 @@ class SeedUssdMenuItemsTableSeeder extends Seeder
                 'next_menu_id' => 0,
                 'step' => 3,
                 'validation' => 'custom',
+                'variable_name' => 'name8',
                 'confirmation_phrase' => 'Confirmation Phrase 8',
             ),
             array(
@@ -93,6 +101,7 @@ class SeedUssdMenuItemsTableSeeder extends Seeder
                 'next_menu_id' => 4,
                 'step' => 0,
                 'validation' => '',
+                'variable_name' => 'name9',
                 'confirmation_phrase' => 'Confirmation Phrase 9',
             ),
             array(
@@ -101,6 +110,7 @@ class SeedUssdMenuItemsTableSeeder extends Seeder
                 'next_menu_id' => 5,
                 'step' => 0,
                 'validation' => '',
+                'variable_name' => 'name10',
                 'confirmation_phrase' => 'Confirmation Phrase 10',
             )));
     }
