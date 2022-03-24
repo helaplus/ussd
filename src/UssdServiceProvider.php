@@ -34,7 +34,7 @@ class UssdServiceProvider extends ServiceProvider
                 $this->publishes([
                     __DIR__ . '/../database/seeders/SeedUssdMenuTableSeeder.php' => database_path('seeders/SeedUssdMenuTableSeeder.php'),
                     __DIR__ . '/../database/seeders/SeedUssdMenuItemsTableSeeder.php' => database_path('seeders/SeedUssdMenuItemsTableSeeder.php'),
-                    __DIR__ . 'UssdHelper.php' => app_path('Http/Controllers/UssdHelper.php'),
+                    __DIR__ . '/UssdHelper.php' => app_path('Http/Controllers/UssdHelper.php'),
                     // you can add any number of migrations here
                 ], 'seeders');
         }
