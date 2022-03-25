@@ -19,7 +19,17 @@ class UssdHelperController extends Controller
         $input['phone'] = $request->input('phoneNumber');
         $input['text'] = $request->input('text');   //
 
+        $text_parts = explode("*", $input['text']);
+
+        if (empty($text_parts)) {
+            $latest_text = $text_parts;
+        } else {
+            end($text_parts);
+            // move the internal pointer to the end of the array
+            $latest_text = current($text_parts);
+        }
         $input['latest_text'] = $latest_text;
+        $input['text'] = $latest_text;
         return (object) $input;
     }
 
@@ -130,7 +140,6 @@ class UssdHelperController extends Controller
                     $response = $response . $i . ": " . $value->description . PHP_EOL;
                     $i++;
                 }
-
                 $state->menu_id = $menu->id;
                 $state->menu_item_id = 0;
                 $state->progress = 1;
