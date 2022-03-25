@@ -190,7 +190,7 @@ class UssdHelper {
         $ussd_response = new UssdResponse();
         if(isset($state->menu_item_id)){
             $menuItem = UssdMenuItems::find($state->menu_item_id);
-            if(!null($menuItem->variable_name)){
+            if(isset($menuItem->variable_name)){
                 $ussd_response->variable_name = $menuItem->variable_name;
             }
         }
