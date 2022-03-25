@@ -140,8 +140,6 @@ class UssdHelperController extends Controller
                 //start a process
                 self::storeUssdResponse($state, $menu->id);
                 $response = self::singleProcess($menu, $state, 1);
-                $state->menu_id = $menu->id;
-                $state->menu_item_id = 0;
                 $state->progress = 1;
                 $state->save();
                 return $menu->title.PHP_EOL.$response;
