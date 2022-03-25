@@ -36,9 +36,10 @@ class UssdServiceProvider extends ServiceProvider
                     __DIR__ . '/../database/seeders/SeedUssdMenuItemsTableSeeder.php' => database_path('seeders/SeedUssdMenuItemsTableSeeder.php'),
                 ], 'seeders');
                 $this->publishes([
-                __DIR__ . '/UssdHelper.php' => app_path('Http/Controllers/UssdHelper.php'),
+                __DIR__ . '/Http/Controllers/UssdHelperController.php' => app_path('Http/Controllers/UssdHelperController.php'),
+                __DIR__ . '/Http/Controllers/UssdController.php' => app_path('Http/Controllers/UssdController.php'),
                 // you can add any number of migrations here
-            ], 'helper');
+            ], 'controllers');
         }
         //Register a command if we are using the application vis CLI
 //        if($this->app->runningInConsole()){
