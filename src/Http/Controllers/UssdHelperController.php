@@ -322,6 +322,8 @@ class UssdHelperController extends Controller
 
             if(self::presetValidation($state,$message,$menuItem)){
                 $step = $state->progress + 1;
+            }else{
+                $step = $state->progress;
             }
         }elseif($menuItem->validation == 'schedule'){
 
