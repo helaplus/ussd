@@ -73,7 +73,7 @@ class UssdHelperController extends Controller
 
     public static function getHomeMenu($state){
         //reset user state
-        $state = UssdHelper::resetUser($state);
+        $state = self::resetUser($state);
 
         //get root Menu
         $root_menu = self::getRootMenu();
