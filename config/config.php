@@ -13,4 +13,7 @@ return [
 
     //default thank you message
     'thank_you_message' => '"Thank you for being our valued customer"',
+
+    //default invalid input message
+    'invalid_input' => "Invalid Input",
 ];

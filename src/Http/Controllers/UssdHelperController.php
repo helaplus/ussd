@@ -324,6 +324,7 @@ class UssdHelperController extends Controller
                 $step = $state->progress + 1;
             }else{
                 $step = $state->progress;
+                $response = config('ussd.invalid_input');
             }
         }elseif($menuItem->validation == 'schedule'){
 
