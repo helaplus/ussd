@@ -188,7 +188,7 @@ class UssdHelper {
     public static function storeUssdResponse($state, $message)
     {
         $ussd_response = new UssdResponse();
-        if(!null($state->menu_item_id)){
+        if(isset($state->menu_item_id)){
             $menuItem = UssdMenuItems::find($state->menu_item_id);
             if(!null($menuItem->variable_name)){
                 $ussd_response->variable_name = $menuItem->variable_name;
