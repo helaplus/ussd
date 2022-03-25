@@ -17,15 +17,15 @@ class UssdController extends Controller
     public function app(Request $request){
 
         //get Inputs
-        $input = UssdHelper::getInputs($request);
+        $input = UssdHelperController::getInputs($request);
 
         //using the phone number get the ussd state
         $state = UssdState::firstorcreate([ 'phone'=>$input->phone]);
         //route request
-        $response = UssdHelper::isUserStarting($input) ? UssdHelper::getHomeMenu($state) : UssdHelper::stateSwitch($input,$state);
+        $response = UssdHelperController::isUserStarting($input) ? UssdHelperController::getHomeMenu($state) : UssdHelperController::stateSwitch($input,$state);
 
         //sendResponse
-        return UssdHelper::sendResponse($response,1,$state,$input);
+        return UssdHelperController::sendResponse($response,1,$state,$input);
     }
 
 
