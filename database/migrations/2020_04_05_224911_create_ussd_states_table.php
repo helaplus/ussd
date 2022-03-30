@@ -23,7 +23,6 @@ class CreateUssdStatesTable extends Migration
             $table->integer('menu_item_id')->default(0);
             $table->integer('confirm_from')->default(0);
             $table->integer('difficulty_level')->default(0);
-            $table->string('event')->nullable();  
             $table->longText('other')->nullable();
             $table->longText('metadata')->nullable();
             $table->timestamps();
