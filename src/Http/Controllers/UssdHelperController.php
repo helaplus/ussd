@@ -345,8 +345,9 @@ class UssdHelperController extends Controller
 
             if ($validator->fails()) {
                 $step = $state->progress;
-                $errors = $validator->errors();
-                $response = $errors->first($menuItem->variable_name) . PHP_EOL;
+                $errors = $validator->errors(); 
+//                $response = $errors->first($menuItem->variable_name) . PHP_EOL;
+                $response = $validator->errors()->first() . PHP_EOL;
             } else {
 
                 $step = $state->progress + 1;
