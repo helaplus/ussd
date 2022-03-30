@@ -395,9 +395,8 @@ class UssdHelperController extends Controller
                 if(strlen($menu->sms)>1){
                 $response = SmsController::sendSms($state->phone,$menu->sms);
                 }
-                if(strlen($menu->event)>1){
-                    print_r(event(new UssdEvent($state,$menu->event)));
-                    exit;
+                if(strlen($menu->event)>1){ 
+                    event(new UssdEvent($state,$menu->event));
                 }
                 $response = $menu->confirmation_message;
                 self::sendResponse($response,3);
