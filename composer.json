@@ -9,6 +9,9 @@
             "email": "leo@helaplus.com"
         }
     ],
+    "require": {
+        "helaplus/sms": "^0.0.1"
+    },
     "autoload": {
         "psr-4": {
             "Helaplus\\Ussd\\": "src/"
