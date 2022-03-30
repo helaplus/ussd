@@ -7,6 +7,7 @@ use Helaplus\Ussd\Models\UssdMenu;
 use Helaplus\Ussd\Models\UssdMenuItems;
 use Helaplus\Ussd\Models\UssdResponse;
 use Helaplus\Ussd\Models\UssdUserMenuSkipLogic;
+use Illuminate\Support\Facades\Validator;
 
 class UssdHelperController extends Controller
 {
@@ -335,8 +336,19 @@ class UssdHelperController extends Controller
             }
         }elseif($menuItem->validation == 'schedule'){
 
+        }elseif(strlen($menu->validation)>0){
+            //laravel validation
+            $validator = Validator::make(['input'=>$message], [
+                'input'=>$menuItem->validation,
+            ])->validate();
+            $valid = $validator['input'];
+            if($valid){
+            $step = $state->progress + 1;
+            }else{
+                $errors = $validator->errors();
+                $response = $errors->first('input').PHP_EOL;
+            }
         }else{
-            //validation is fine
             $step = $state->progress + 1;
         }
 
