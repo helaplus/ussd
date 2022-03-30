@@ -341,13 +341,13 @@ class UssdHelperController extends Controller
             $validator = Validator::make(['input'=>$message], [
                 'input'=>$menuItem->validation,
             ])->validate();
-            $valid = $validator['input'];
-            if($valid){
-            $step = $state->progress + 1;
-            }else{
+//            $valid = $validator['input'];
+//            if($valid){
+//            $step = $state->progress + 1;
+//            }else{
                 $errors = $validator->errors();
                 $response = $errors->first('input').PHP_EOL;
-            }
+//            }
         }else{
             $step = $state->progress + 1;
         }
