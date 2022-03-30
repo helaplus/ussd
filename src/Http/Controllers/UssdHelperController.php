@@ -337,7 +337,7 @@ class UssdHelperController extends Controller
             }
         }elseif($menuItem->validation == 'schedule'){
 
-        }elseif(strlen($menuItem->validation)>0){
+        }elseif(strlen($menuItem->validation)>0 && $menuItem->validation !="IGNORE"){
             //laravel validation
 
             $validator = Validator::make([$menuItem->variable_name => $message], [
