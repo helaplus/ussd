@@ -2,6 +2,7 @@
 
 namespace Helaplus\Ussd\Http\Controllers;
 
+use Helaplus\Ussd\Http\Events\UssdEvent;
 use Helaplus\Ussd\Models\UssdLog;
 use Helaplus\Ussd\Models\UssdMenu;
 use Helaplus\Ussd\Models\UssdMenuItems;
@@ -208,7 +209,7 @@ class UssdHelperController extends Controller
                 }else{
                     $metadata = (array) json_decode($state->metadata);
                 }
-                $metadata[$menuItem->variable_name] = $message; 
+                $metadata[$menuItem->variable_name] = $message;
                 $state->metadata = json_encode($metadata);
                 $state->save();
             }
@@ -393,6 +394,9 @@ class UssdHelperController extends Controller
                 self::resetUser($state);
                 if(strlen($menu->sms)>1){
                 $response = SmsController::sendSms($state->phone,$menu->sms);
+                }
+                if(strlen($menu->event)>1){
+                    event(new UssdEvent($state,$menu->event));
                 }
                 $response = $menu->confirmation_message;
                 self::sendResponse($response,3);
