@@ -2,7 +2,7 @@
 
 namespace Helaplus\Ussd\Http\Controllers;
 
-use Helaplus\Ussd\Http\Events\UssdEvent;
+use Helaplus\Ussd\Events\UssdEvent;
 use Helaplus\Ussd\Models\UssdLog;
 use Helaplus\Ussd\Models\UssdMenu;
 use Helaplus\Ussd\Models\UssdMenuItems;
@@ -396,7 +396,8 @@ class UssdHelperController extends Controller
                 $response = SmsController::sendSms($state->phone,$menu->sms);
                 }
                 if(strlen($menu->event)>1){
-                    event(new UssdEvent($state,$menu->event));
+                    print_r(event(new UssdEvent($state,$menu->event)));
+                    exit;
                 }
                 $response = $menu->confirmation_message;
                 self::sendResponse($response,3);
