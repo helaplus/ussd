@@ -338,18 +338,19 @@ class UssdHelperController extends Controller
 
         }elseif(strlen($menuItem->validation)>0){
             //laravel validation
-            $validator = Validator::make(['input'=>$message], [
-                'input'=>$menuItem->validation,
-            ])->validate();
-            print_r($validator);
-            exit; 
-//            $valid = $validator['input'];
-//            if($valid){
-//            $step = $state->progress + 1;
-//            }else{
+
+            $validator = Validator::make([$menuItem->variable_name => $message], [
+                $menuItem->variable_name => $menuItem->validation,
+            ]);
+
+            if ($validator->fails()) {
+                $step = $state->progress;
                 $errors = $validator->errors();
-                $response = $errors->first('input').PHP_EOL;
-//            }
+                $response = $errors->first($menuItem->variable_name) . PHP_EOL;
+            } else {
+
+                $step = $state->progress + 1;
+            }
         }else{
             $step = $state->progress + 1;
         }
