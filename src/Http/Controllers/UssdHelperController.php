@@ -8,6 +8,7 @@ use Helaplus\Ussd\Models\UssdMenuItems;
 use Helaplus\Ussd\Models\UssdResponse;
 use Helaplus\Ussd\Models\UssdUserMenuSkipLogic;
 use Illuminate\Support\Facades\Validator;
+use Helaplus\Sms\Http\Controllers\SmsController;
 
 class UssdHelperController extends Controller
 {
@@ -381,6 +382,9 @@ class UssdHelperController extends Controller
                 $response = self::nextMenuSwitch($state, $menu);
             }else{
                 self::resetUser($state);
+                if(strlen($menu->sms)>1){
+                $response = SmsController::sendSms($state->phone,$menu->sms);
+                }
                 $response = $menu->confirmation_message;
                 self::sendResponse($response,3);
             }
