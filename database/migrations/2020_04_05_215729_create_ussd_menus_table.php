@@ -24,6 +24,7 @@ class CreateUssdMenusTable extends Migration
             $table->boolean('confirmable')->default(0);
             $table->integer('next_ussd_menu_id')->default(0);
             $table->string('confirmation_message')->nullable();
+            $table->string('sms')->nullable();
             $table->timestamps();
         });
     }
