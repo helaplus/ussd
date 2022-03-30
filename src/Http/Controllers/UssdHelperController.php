@@ -202,7 +202,16 @@ class UssdHelperController extends Controller
             $menuItem = UssdMenuItems::find($state->menu_item_id);
             if(isset($menuItem->variable_name)){
                 $ussd_response->variable_name = $menuItem->variable_name;
-            }
+                //get state
+                if(strlen($state->metadata)==0){
+                    $metadata = [];
+                }else{
+                    $metadata = json_decode($state->metadata);
+                }
+                $metadata[ $menuItem->variable_name] = $message;
+                $state->metadata = json_encode($metadata);
+                $state->save();
+            } 
         }
         $ussd_response->phone = $state->phone;
         $ussd_response->menu_id = $state->menu_id;
