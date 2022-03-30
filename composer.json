@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "helaplus/sms": "^0.0.1"
+        "helaplus/sms": ">=0.0.1"
     },
     "autoload": {
         "psr-4": {
