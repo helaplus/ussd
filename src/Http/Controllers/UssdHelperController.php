@@ -360,7 +360,6 @@ class UssdHelperController extends Controller
 //                $response = $errors->first($menuItem->variable_name) . PHP_EOL;
                 $response = $validator->errors()->first() . PHP_EOL;
             } else {
-
                 $step = $state->progress + 1;
             }
         }else{
@@ -391,14 +390,14 @@ class UssdHelperController extends Controller
                 $menu = UssdMenu::find($menu->next_ussd_menu_id);
                 $response = self::nextMenuSwitch($state, $menu);
             }else{
+                $response = $menu->confirmation_message;
                 self::resetUser($state);
                 if(strlen($menu->sms)>1){
-                $response = SmsController::sendSms($state->phone,$menu->sms);
+                    SmsController::sendSms($state->phone,$menu->sms);
                 }
-                if(strlen($menu->event)>1){ 
+                if(strlen($menu->event)>1){
                     event(new UssdEvent($state,$menu->event));
                 }
-                $response = $menu->confirmation_message;
                 self::sendResponse($response,3);
             }
             return $response;
