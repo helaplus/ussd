@@ -393,7 +393,8 @@ class UssdHelperController extends Controller
                 $response = $menu->confirmation_message;
                 self::resetUser($state);
                 if(strlen($menu->sms)>1){
-                    SmsController::sendSms($state->phone,$menu->sms);
+                    $state->sms = $menu->sms;
+                    event(new UssdEvent($state,'sms'));
                 }
                 //should we broadcast an event?
                 if(strlen($menu->event)>1){
