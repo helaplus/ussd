@@ -392,14 +392,14 @@ class UssdHelperController extends Controller
             }else{
                 $response = $menu->confirmation_message;
                 self::resetUser($state);
-//                if(strlen($menu->sms)>1){
-//                    $state->sms = $menu->sms;
-//                    event(new UssdEvent($state,'sms'));
-//                }
-//                //should we broadcast an event?
-//                if(strlen($menu->event)>1){
-//                    event(new UssdEvent($state,$menu->event));
-//                }
+                if(strlen($menu->sms)>1){
+                    $state->sms = $menu->sms;
+                    event(new UssdEvent($state,'sms'));
+                }
+                //should we broadcast an event?
+                if(strlen($menu->event)>1){
+                    event(new UssdEvent($state,$menu->event));
+                }
                 self::sendResponse($response,3);
             }
             return $response;
