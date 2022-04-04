@@ -5,12 +5,13 @@ namespace Helaplus\Ussd\Events;
 use Helaplus\Ussd\Models\UssdState;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UssdEvent
 {
-    use Dispatchable, SerializesModels;
+    use Dispatchable, SerializesModels, ShouldQueue;
 
-    public $state;
+    public $state; 
 
     public $eventType;
 
