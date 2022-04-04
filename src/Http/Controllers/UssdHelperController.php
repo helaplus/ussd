@@ -3,6 +3,7 @@
 namespace Helaplus\Ussd\Http\Controllers;
 
 use Helaplus\Ussd\Events\UssdEvent;
+use Helaplus\Ussd\Jobs\TriggerEvent;
 use Helaplus\Ussd\Models\UssdLog;
 use Helaplus\Ussd\Models\UssdMenu;
 use Helaplus\Ussd\Models\UssdMenuItems;
@@ -394,11 +395,11 @@ class UssdHelperController extends Controller
                 self::resetUser($state);
                 if(strlen($menu->sms)>1){
                     $state->sms = $menu->sms;
-                    event(new UssdEvent($state,'sms'));
+                    TriggerEvent::dispatch($state,'sms');
                 }
                 //should we broadcast an event?
                 if(strlen($menu->event)>1){
-                    event(new UssdEvent($state,$menu->event));
+                    TriggerEvent::dispatch($state,$menu->event);
                 }
                 self::sendResponse($response,3);
             }
