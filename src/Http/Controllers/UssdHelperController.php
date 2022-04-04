@@ -374,7 +374,7 @@ class UssdHelperController extends Controller
             $state->save();
             return $response. $menuItem->description;
         } else {
-            if($menu->skippable == true){
+            if($menu->skippable == 1){
                 $skiplogic = UssdUserMenuSkipLogic::wherePhoneAndUssdMenuIdAndSkip($state->phone,$menu->id,$menu->skippable)->first();
                 if(!$skiplogic){
                     $skiplogic = new UssdUserMenuSkipLogic();
@@ -389,7 +389,7 @@ class UssdHelperController extends Controller
             if($menu->skippable == 2){
                 $menu = UssdMenu::find($menu->next_ussd_menu_id);
                 $response = self::nextMenuSwitch($state, $menu);
-            }else{
+            }else{ 
                 $response = $menu->confirmation_message;
                 self::resetUser($state);
                 if(strlen($menu->sms)>1){
