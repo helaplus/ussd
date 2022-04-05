@@ -357,12 +357,12 @@ class UssdHelperController extends Controller
             if($message == $metadata['pin']){
                 $step = $state->progress+1;
             }else{
-                $response = "Invalid PIN";
+                $response = "Invalid PIN".PHP_EOL; 
             }
         }elseif(strpos("a".$menuItem->validation, 'confirm_') !== false ){
             $exploded_variable = explode("_",$menuItem->validation);
             $metadata = (array) json_decode($state->metadata);
-            if($message == $metadata[$exploded_variable[1]]){ 
+            if($message == $metadata[$exploded_variable[1]]){
                 $step = $state->progress+1;
             }else{
                 $step = $state->progress-1;
