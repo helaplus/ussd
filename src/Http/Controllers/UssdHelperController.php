@@ -346,7 +346,15 @@ class UssdHelperController extends Controller
                 $step = $state->progress;
                 $response = config('ussd.invalid_input');
             }
-        }elseif($menuItem->validation == 'schedule'){
+        }elseif($menuItem->validation == 'confirm_'){
+            $exploded_variable = explode("confirm_",$menuItem->validation);
+            $metadata = (array) json_decode($state->metadata);
+            if($message == $metadata[$exploded_variable[0]]){
+                $step = $state->progress+1;
+            }else{
+                $step = $state->progress-1;
+                $response = "Invalid PIN";
+            }
 
         }elseif(strlen($menuItem->validation)>0 && $menuItem->validation !="IGNORE"){
             //laravel validation
