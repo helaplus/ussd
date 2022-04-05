@@ -278,10 +278,13 @@ class UssdHelperController extends Controller
         exit;
     }
 
-    public static function replaceTemplates($state,$response){
-        //$search  = array('{param}','{param2}'); // sample
-        //$replace = array('{param}','{param2');
-        //$response = str_replace($search, $replace, $response);
+    public static function replaceTemplates($state=null,$response){
+        if($state){
+        $metadata = (array) json_decode($state->metadata);
+        foreach ($metadata as $mt){
+            $response = str_replace('{'.$mt.'}',$mt);
+        }
+        }
         return $response;
     }
 
@@ -354,7 +357,7 @@ class UssdHelperController extends Controller
             }else{
                 $response = "Invalid PIN";
             }
-        }elseif($menuItem->validation == 'confirm_'){ 
+        }elseif($menuItem->validation == 'confirm_'){
             $exploded_variable = explode("confirm_",$menuItem->validation);
             $metadata = (array) json_decode($state->metadata);
             if($message == $metadata[$exploded_variable[0]]){
