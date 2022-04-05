@@ -415,14 +415,14 @@ class UssdHelperController extends Controller
                 $response = $menu->confirmation_message;
                 self::resetUser($state);
                 if(strlen($menu->sms)>1){
-                    $state->sms = $menu->sms;
+                    $state->sms = self::replaceTemplates($state,$menu->sms);
                     TriggerEvent::dispatch($state,'sms');
                 }
                 //should we broadcast an event?
                 if(strlen($menu->event)>1){
                     TriggerEvent::dispatch($state,$menu->event);
                 }
-                self::sendResponse($response,3,$state); 
+                self::sendResponse($response,3,$state);
             }
             return $response;
         }
