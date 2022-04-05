@@ -359,7 +359,7 @@ class UssdHelperController extends Controller
             }else{
                 $response = "Invalid PIN";
             }
-        }elseif($menuItem->validation == 'confirm_'){
+        }elseif(strpos($menuItem->validation, 'confirm_')){
             $exploded_variable = explode("confirm_",$menuItem->validation);
             $metadata = (array) json_decode($state->metadata);
             if($message == $metadata[$exploded_variable[0]]){
