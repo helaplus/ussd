@@ -346,7 +346,15 @@ class UssdHelperController extends Controller
                 $step = $state->progress;
                 $response = config('ussd.invalid_input');
             }
-        }elseif($menuItem->validation == 'confirm_'){
+        }elseif($menuItem->validation == 'auth_pin'){
+            $exploded_variable = explode("confirm_",$menuItem->validation);
+            $metadata = (array) json_decode($state->metadata);
+            if($message == $metadata['pin']){
+                $step = $state->progress+1;
+            }else{
+                $response = "Invalid PIN";
+            }
+        }elseif($menuItem->validation == 'confirm_'){ 
             $exploded_variable = explode("confirm_",$menuItem->validation);
             $metadata = (array) json_decode($state->metadata);
             if($message == $metadata[$exploded_variable[0]]){
