@@ -278,11 +278,11 @@ class UssdHelperController extends Controller
         exit;
     }
 
-    public static function replaceTemplates($state=null,$response){
+    public static function replaceTemplates($state=null,$response){ 
         if($state){
         $metadata = (array) json_decode($state->metadata);
-        foreach ($metadata as $mt){
-            $response = str_replace('{'.$mt.'}',$mt,$response); 
+        foreach ($metadata as $key => $mt){
+            $response = str_replace('{'.$key.'}',$mt,$response);
         }
         }
         return $response;
