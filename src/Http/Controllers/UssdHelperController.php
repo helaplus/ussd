@@ -282,7 +282,7 @@ class UssdHelperController extends Controller
         if($state){
         $metadata = (array) json_decode($state->metadata);
         foreach ($metadata as $mt){
-            $response = str_replace('{'.$mt.'}',$mt);
+            $response = str_replace('{'.$mt.'}',$mt,$response); 
         }
         }
         return $response;
