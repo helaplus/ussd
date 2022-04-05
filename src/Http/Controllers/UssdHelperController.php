@@ -422,7 +422,7 @@ class UssdHelperController extends Controller
                 if(strlen($menu->event)>1){
                     TriggerEvent::dispatch($state,$menu->event);
                 }
-                self::sendResponse($response,3);
+                self::sendResponse($response,3,$state); 
             }
             return $response;
         }
