@@ -11,7 +11,6 @@ use Helaplus\Ussd\Models\UssdResponse;
 use Helaplus\Ussd\Models\UssdUserMenuSkipLogic;
 use Illuminate\Support\Facades\Validator;
 use Helaplus\Sms\Http\Controllers\SmsController;
-use Illuminate\Support\Facades\Http;
 
 class UssdHelperController extends Controller
 {
@@ -280,17 +279,14 @@ class UssdHelperController extends Controller
     }
 
     public static function replaceTemplates($state,$response){
-        if($state){
         $metadata = (array) json_decode($state->metadata);
-        foreach ($metadata as $key => $mt){
-            $response = str_replace("'{'.$key.'}'",$mt,$response);
-            $rs = Http::post('https://webhook.site/2d505196-f8c9-401d-be1f-31abd9ae0f05', [
-                'key' => $key,
-                'mt' => $mt,
-                'response' => $response
-            ]);
+        $search = [];
+        $replace = [];
+        foreach ($metadata as $key=>$mt){
+            array_push($search,'{'.$key.'}');
+            array_push($replace,$mt);
         }
-        }
+        $response = str_replace($search, $replace, $response);
         return $response;
     }
 
