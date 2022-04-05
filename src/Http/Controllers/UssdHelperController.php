@@ -343,7 +343,7 @@ class UssdHelperController extends Controller
             if(self::customValidation($state,$message,$menuItem)){
                 $step = $state->progress + 1;
             }
-        }elseif(strpos($menuItem->validation, '_preset')!== false) { 
+        }elseif(strpos($menuItem->validation, '_preset')!== false) {
 
             if(self::presetValidation($state,$message,$menuItem)){
                 $step = $state->progress + 1;
@@ -359,7 +359,7 @@ class UssdHelperController extends Controller
             }else{
                 $response = "Invalid PIN";
             }
-        }elseif(strpos($menuItem->validation, 'confirm_') !== false ){
+        }elseif(strpos("a".$menuItem->validation, 'confirm_') !== false ){
             $exploded_variable = explode("confirm_",$menuItem->validation);
             $metadata = (array) json_decode($state->metadata);
             if($message == $metadata[$exploded_variable[0]]){
