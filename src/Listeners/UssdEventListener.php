@@ -18,7 +18,7 @@ class UssdEventListener
         switch ($event->eventType) {
             case 'UssdUserRegistered':
                 //do something
-                self::processRegisteredUser($event)
+                self::processRegisteredUser($event);
                 break;
             case 'sms':
                 self::sendSms($event);

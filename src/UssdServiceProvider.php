@@ -40,6 +40,10 @@ class UssdServiceProvider extends ServiceProvider
                 __DIR__ . '/Http/Controllers/UssdController.php' => app_path('Http/Controllers/UssdController.php'),
                 // you can add any number of migrations here
             ], 'controllers');
+                //publish the listener
+            $this->publishes([ 
+                __DIR__ . '/Listeners/UssdEventListener.php' => app_path('Listeners/Controllers/UssdEventListener.php'),
+            ], 'Listeners');
         }
         //Register a command if we are using the application vis CLI
 //        if($this->app->runningInConsole()){
