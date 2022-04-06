@@ -29,7 +29,7 @@ class UssdServiceProvider extends ServiceProvider
 
         }
 
-        if ($this->app->runningInConsole()) {
+        if ($this->app->runningInConsole()) { 
             // Export the migration
                 $this->publishes([
                     __DIR__ . '/../database/seeders/SeedUssdMenuTableSeeder.php' => database_path('seeders/SeedUssdMenuTableSeeder.php'),
@@ -41,8 +41,8 @@ class UssdServiceProvider extends ServiceProvider
                 // you can add any number of migrations here
             ], 'controllers');
                 //publish the listener
-            $this->publishes([ 
-                __DIR__ . '/Listeners/UssdEventListener.php' => app_path('Listeners/Controllers/UssdEventListener.php'),
+            $this->publishes([
+                __DIR__ . '/Listeners/UssdEventListener.php' => app_path('Listeners/UssdEventListener.php'),
             ], 'Listeners');
         }
         //Register a command if we are using the application vis CLI
