@@ -11,7 +11,7 @@ use Helaplus\Ussd\Models\UssdResponse;
 use Helaplus\Ussd\Models\UssdUserMenuSkipLogic;
 use Illuminate\Support\Facades\Validator;
 use Helaplus\Sms\Http\Controllers\SmsController;
-use Helaplus\Laravelmifos\Http\Controllers\LoanController;
+use Helaplus\Laravelmifos\Http\LoanController;
 
 class UssdHelperController extends Controller
 {
@@ -293,13 +293,15 @@ class UssdHelperController extends Controller
         return $response;
     }
 
-    public static function replaceFunctions($state,$response){ 
-        if(strpos($response,'function_')){
+    public static function replaceFunctions($state,$response){
+        if(strpos($response,'function_') !== false){
+
             $exploded_function = explode("function_",$response);
+            $exploded_function = explode("}",$exploded_function[1]);
+
             switch ($exploded_function[0]) {
                 case 'getLoanBalance':
-                    $loanController = new LoanController();
-                    $balance = $loanController->getLoanBalance($state->phone);
+                    $balance = LoanController::getLoanBalance($state->phone);
                     if($balance['amount'] == 0){
                         $respones = "You have no active loan";
                     }else{
