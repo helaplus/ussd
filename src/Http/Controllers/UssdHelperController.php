@@ -443,7 +443,7 @@ class UssdHelperController extends Controller
                     $state->other = $menu->sms;
                     $state->other = self::replaceTemplates($state,$menu->sms);
                     $state->save();
-                    $response = TriggerEvent::dispatch($state,'sms');
+                    TriggerEvent::dispatch($state,'sms'); 
                 }
                 //should we broadcast an event?
                 if(strlen($menu->event)>1){
