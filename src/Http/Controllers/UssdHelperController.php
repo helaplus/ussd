@@ -295,7 +295,6 @@ class UssdHelperController extends Controller
 
     public static function replaceFunctions($state,$response){
         if(strpos($response,'function_') !== false){
-
             $exploded_function = explode("function_",$response);
             $exploded_function = explode("}",$exploded_function[1]);
 
@@ -305,7 +304,7 @@ class UssdHelperController extends Controller
                     if($balance['amount'] == 0){
                         $respones = "You have no active loan";
                     }else{
-                        $response = str_replace("function_getLoanBalance",$balance['amount']);
+                        $response = str_replace("{function_getLoanBalance}",$balance['amount'],$response);
                     }
                     break;
             }
