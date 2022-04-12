@@ -174,6 +174,7 @@ class UssdHelperController extends Controller
                 $response = config('ussd.default_error_message');
                 break;
         }
+        $response = self::replaceTemplates($state,$response);
         return $response;
     }
 
@@ -443,7 +444,7 @@ class UssdHelperController extends Controller
                     $state->other = $menu->sms;
                     $state->other = self::replaceTemplates($state,$menu->sms);
                     $state->save();
-                    TriggerEvent::dispatch($state,'sms'); 
+                    TriggerEvent::dispatch($state,'sms');
                 }
                 //should we broadcast an event?
                 if(strlen($menu->event)>1){
