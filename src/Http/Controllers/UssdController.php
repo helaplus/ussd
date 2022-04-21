@@ -28,5 +28,19 @@ class UssdController extends Controller
         return UssdHelperController::sendResponse($response,1,$state,$input);
     }
 
+    public function multiApp(Request $request,$slug){
+
+        //get Inputs
+        $input = UssdHelperController::getInputs($request);
+
+        //using the phone number get the ussd state
+        $state = UssdState::firstorcreate([ 'phone'=>$input->phone]);
+        //route request
+        $response = UssdHelperController::isUserStarting($input) ? UssdHelperController::getHomeMenu($state) : UssdHelperController::stateSwitch($input,$state);
+
+        //sendResponse
+        return UssdHelperController::sendResponse($response,1,$state,$input);
+    }
+
 
 }
