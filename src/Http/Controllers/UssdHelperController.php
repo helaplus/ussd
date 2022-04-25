@@ -277,7 +277,6 @@ class UssdHelperController extends Controller
         $output .= $response;
         header('Content-type: text/plain');
         echo $output;
-        exit;
     }
 
     public static function replaceTemplates($state,$response){
@@ -446,11 +445,13 @@ class UssdHelperController extends Controller
                     $state->save();
                     TriggerEvent::dispatch($state,'sms');
                 }
+
+                self::sendResponse($response,3,$state);
                 //should we broadcast an event?
                 if(strlen($menu->event)>1){
                     TriggerEvent::dispatch($state,$menu->event);
                 }
-                self::sendResponse($response,3,$state);
+                exit;
             }
             return $response;
         }
