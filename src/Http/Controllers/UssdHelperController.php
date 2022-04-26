@@ -468,7 +468,8 @@ class UssdHelperController extends Controller
             if($menu->event == 'stk'){
             TriggerEvent::dispatch($state,$menu->event);
             }else{
-            TriggerEvent::dispatch($state,$menu->event)->delay(now()->addSeconds(3));
+                TriggerEvent::dispatchAfterResponse($state,$menu->event);
+//            TriggerEvent::dispatch($state,$menu->event)->delay(now()->addSeconds(3));
             }
         }
     }
