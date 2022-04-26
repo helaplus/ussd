@@ -161,6 +161,7 @@ class UssdHelperController extends Controller
             case 3:
                 //custom information app
                 self::storeUssdResponse($state, $menu->id);
+                self::triggerEvent($state,$menu);
                 self::sendResponse($menu->confirmation_message,3,$state);
                 break;
             case 4:
@@ -445,15 +446,24 @@ class UssdHelperController extends Controller
                     $state->save();
                     TriggerEvent::dispatch($state,'sms');
                 }
-
                 self::sendResponse($response,3,$state);
                 //should we broadcast an event?
                 if(strlen($menu->event)>1){
-                    TriggerEvent::dispatch($state,$menu->event);
+                    self::triggerEvent($state,$menu);
                 }
                 exit;
             }
             return $response;
+        }
+    }
+
+    public static function triggerEvent($state,$menu){
+
+        //check if it is an array and has additional params.
+        if(is_array($menu->event)){
+            TriggerEvent::dispatch($state,$menu->event['name'])->delay(now()->addSeconds($menu->event['delay']));
+        }else{
+            TriggerEvent::dispatch($state,$menu->event);
         }
     }
     public static function presetValidation($state,$message,$menuItem){
