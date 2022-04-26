@@ -260,7 +260,7 @@ class UssdHelperController extends Controller
     {
         if(substr(strtolower($response),0,3) == 'end'){
             $type = 3;
-        } 
+        }
         $response = self::replaceTemplates($state,$response);
         //Log response
 
@@ -465,7 +465,11 @@ class UssdHelperController extends Controller
         if(is_array($menu->event)){
             TriggerEvent::dispatch($state,$menu->event['name'])->delay(now()->addSeconds($menu->event['delay']));
         }else{
+            if($menu->event == 'stk'){
             TriggerEvent::dispatch($state,$menu->event);
+            }else{
+            TriggerEvent::dispatch($state,$menu->event)->delay(now()->addSeconds(3));
+            }
         }
     }
     public static function presetValidation($state,$message,$menuItem){
