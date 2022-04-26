@@ -162,7 +162,7 @@ class UssdHelperController extends Controller
                 //custom information app
                 self::storeUssdResponse($state, $menu->id);
                 self::triggerEvent($state,$menu);
-                self::sendResponse($menu->confirmation_message,3,$state);
+                $response = 'END '.$menu->confirmation_message;
                 break;
             case 4:
                 //start a custom process
@@ -258,7 +258,9 @@ class UssdHelperController extends Controller
 
     public static function sendResponse($response, $type, $state=null,$input=null)
     {
-
+        if(substr(strtolower($response),0,3) == 'end'){
+            $type = 3;
+        } 
         $response = self::replaceTemplates($state,$response);
         //Log response
 
