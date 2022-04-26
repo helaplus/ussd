@@ -16,4 +16,6 @@ return [
 
     //default invalid input message
     'invalid_input' => "Invalid Input",
+    //default delay time
+    'event_delay_time' => env('EVENT_DELAY_TIME',0),
 ];
