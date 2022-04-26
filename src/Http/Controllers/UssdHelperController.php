@@ -460,17 +460,11 @@ class UssdHelperController extends Controller
     }
 
     public static function triggerEvent($state,$menu){
-
         //check if it is an array and has additional params.
         if(is_array($menu->event)){
             TriggerEvent::dispatch($state,$menu->event['name'])->delay(now()->addSeconds($menu->event['delay']));
         }else{
-            if($menu->event == 'stk'){
-                TriggerEvent::dispatch($state,$menu->event)->delay(now()->addSeconds(5));
-            }else{
-//                TriggerEvent::dispatchAfterResponse($state,$menu->event);
-            TriggerEvent::dispatch($state,$menu->event)->delay(now()->addSeconds(5));
-            }
+            TriggerEvent::dispatch($state,$menu->event)->delay(now()->addSeconds(config('ussd.event_delay_time')));
         }
     }
     public static function presetValidation($state,$message,$menuItem){
