@@ -16,7 +16,7 @@ class CreateUssdMenuItemsTable extends Migration
         Schema::create('ussd_menu_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('menu_id')->unsigned();
-            $table->string('description');
+            $table->text('description'); 
             $table->integer('type')->default(0);
             $table->integer('next_menu_id')->default(NULL);
             $table->integer('step');
