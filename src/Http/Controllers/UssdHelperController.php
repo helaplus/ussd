@@ -301,14 +301,14 @@ class UssdHelperController extends Controller
             $exploded_function = explode("function_",$response);
             $exploded_function = explode("}",$exploded_function[1]);
 
-            switch ($exploded_function[0]) {
+            switch ($exploded_function[0]) { 
                 case 'getLoanBalance':
                     $balance = LoanController::getLoanBalance($state->phone);
-                    if($balance['amount'] == 0){
-                        $respones = "You have no active loan";
-                    }else{
+//                    if($balance['amount'] == 0){
+//                        $respones = "You have no active loan";
+//                    }else{
                         $response = str_replace("{function_getLoanBalance}",$balance['amount'],$response);
-                    }
+//                    }
                     break;
                 case 'EBal':
 //                    $expected = LoanController::getLoanSchedule($amount);
@@ -320,7 +320,7 @@ class UssdHelperController extends Controller
                     $response = str_replace("{function_EFac}", $fee, $response);
                     break;
                 case 'EFac':
-                    $metadata = json_decode($state->metadata); 
+                    $metadata = json_decode($state->metadata);
                     $amount = $metadata->loan_amount;
                     $fee = $amount/100;
                     $total = $amount+$fee;
