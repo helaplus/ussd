@@ -310,6 +310,23 @@ class UssdHelperController extends Controller
                         $response = str_replace("{function_getLoanBalance}",$balance['amount'],$response);
                     }
                     break;
+                case 'EBal':
+//                    $expected = LoanController::getLoanSchedule($amount);
+                    $metadata = (array) json_decode($state->metadata);
+                    $amount = $metadata->loan_amount;
+                    $fee = $amount/100;
+                    $total = $amount+$fee;
+                    $response = str_replace("{function_EBal}", $total, $response);
+                    $response = str_replace("{function_EFac}", $fee, $response);
+                    break;
+                case 'EFac':
+                    $metadata = (array) json_decode($state->metadata);
+                    $amount = $metadata->loan_amount;
+                    $fee = $amount/100;
+                    $total = $amount+$fee;
+                    $response = str_replace("{function_EBal}", $total, $response);
+                    $response = str_replace("{function_EFac}", $fee, $response);
+                    break;
             }
             return $response;
         }else{
