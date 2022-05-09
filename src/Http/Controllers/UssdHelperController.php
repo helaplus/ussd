@@ -320,10 +320,10 @@ class UssdHelperController extends Controller
                     $response = str_replace("{function_EFac}", $fee, $response);
                     break;
                 case 'EFac':
-                    $metadata = (array) json_decode($state->metadata);
+                    $metadata = json_decode($state->metadata); 
                     $amount = $metadata->loan_amount;
                     $fee = $amount/100;
-                    $total = $amount+$fee; 
+                    $total = $amount+$fee;
                     $response = str_replace("{function_EBal}", $total, $response);
                     $response = str_replace("{function_EFac}", $fee, $response);
                     break;
