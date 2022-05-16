@@ -12,6 +12,7 @@ use Helaplus\Ussd\Models\UssdUserMenuSkipLogic;
 use Illuminate\Support\Facades\Validator;
 use Helaplus\Sms\Http\Controllers\SmsController;
 use Helaplus\Laravelmifos\Http\LoanController;
+use Carbon\Carbon;
 
 class UssdHelperController extends Controller
 {
@@ -328,7 +329,7 @@ class UssdHelperController extends Controller
                     $total = $amount+$fee;
                     $response = str_replace("{function_EBal}", $total, $response);
                     $response = str_replace("{function_EFac}", $fee, $response);
-                    $due_date = Carbon::now()->addDay(7)->toDateString(); 
+                    $due_date = Carbon::now()->addDay(7)->toDateString();
                     $response = str_replace("{due_date}", $due_date, $response);
                     break;
             }
