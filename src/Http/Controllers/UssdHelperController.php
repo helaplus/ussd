@@ -162,7 +162,7 @@ class UssdHelperController extends Controller
             case 3:
                 //custom information app
                 self::storeUssdResponse($state, $menu->id);
-                if(strlen($menu->sms)>1){  
+                if(strlen($menu->sms)>1){
                     $state->other = $menu->sms;
                     $state->other = self::replaceTemplates($state,$menu->sms);
                     $state->save();
@@ -170,7 +170,7 @@ class UssdHelperController extends Controller
                 }else{
                 self::triggerEvent($state,$menu);
                 }
-                $response = 'END '.$menu->confirmation_message;
+                $response = $menu->confirmation_message;
 
                 break;
             case 4:
@@ -339,6 +339,9 @@ class UssdHelperController extends Controller
                     $response = str_replace("{function_EFac}", $fee, $response);
                     $due_date = Carbon::now()->addDay(7)->toDateString();
                     $response = str_replace("{due_date}", $due_date, $response);
+                    break;
+                case 'loanLimit':
+                    $response = str_replace("{function_loanLimit}", "2000", $response);
                     break;
             }
             return $response;
