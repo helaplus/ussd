@@ -162,7 +162,14 @@ class UssdHelperController extends Controller
             case 3:
                 //custom information app
                 self::storeUssdResponse($state, $menu->id);
+                if(strlen($menu->sms)>1){  
+                    $state->other = $menu->sms;
+                    $state->other = self::replaceTemplates($state,$menu->sms);
+                    $state->save();
+                    TriggerEvent::dispatch($state,'sms');
+                }else{
                 self::triggerEvent($state,$menu);
+                }
                 $response = 'END '.$menu->confirmation_message;
 
                 break;
