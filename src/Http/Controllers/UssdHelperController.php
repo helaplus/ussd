@@ -328,6 +328,8 @@ class UssdHelperController extends Controller
                     $total = $amount+$fee;
                     $response = str_replace("{function_EBal}", $total, $response);
                     $response = str_replace("{function_EFac}", $fee, $response);
+                    $due_date = Carbon::now()->addDay(7)->toDateString(); 
+                    $response = str_replace("{due_date}", $due_date, $response);
                     break;
             }
             return $response;
