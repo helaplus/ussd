@@ -164,6 +164,7 @@ class UssdHelperController extends Controller
                 self::storeUssdResponse($state, $menu->id);
                 self::triggerEvent($state,$menu);
                 $response = 'END '.$menu->confirmation_message;
+
                 break;
             case 4:
                 //start a custom process
@@ -483,11 +484,11 @@ class UssdHelperController extends Controller
 
     public static function triggerEvent($state,$menu){
         //check if it is an array and has additional params.
-        if(is_array($menu->event)){
-            TriggerEvent::dispatch($state,$menu->event['name'])->delay(now()->addSeconds($menu->event['delay']));
-        }else{
+//        if(is_array($menu->event)){
+//            TriggerEvent::dispatch($state,$menu->event['name'])->delay(now()->addSeconds($menu->event['delay']));
+//        }else{
             TriggerEvent::dispatch($state,$menu->event)->delay(now()->addSeconds(config('ussd.event_delay_time')));
-        }
+//        }
     }
     public static function presetValidation($state,$message,$menuItem){
         switch ($menuItem->validation) {
