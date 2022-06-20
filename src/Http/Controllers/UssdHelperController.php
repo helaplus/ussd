@@ -146,6 +146,7 @@ class UssdHelperController extends Controller
                     $response = $response . $i . ": " . $value->description . PHP_EOL;
                     $i++;
                 }
+                $state->state = 2; 
                 $state->menu_id = $menu->id;
                 $state->menu_item_id = 0;
                 $state->progress = 1;
